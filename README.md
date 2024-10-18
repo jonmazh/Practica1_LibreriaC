@@ -4,7 +4,7 @@
 
 | Autor                     | GitHub                                   |
 |---------------------------|------------------------------------------|
-| **Jon Mazcuñán Hernández** | [JonMazcunhan](https://github.com/jonmazh) |
+| **Jon Mazcuñán Hernández** | [jonmazh](https://github.com/jonmazh) |
 | **Alejandro Rico González**| //TODO |
 ---
 
