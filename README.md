@@ -2,10 +2,10 @@
 
 ### Programación de una Librería en C
 
-Autores:  
-**Jon Mazcuñán Hernández**  
-**Alejandro Rico González**
-
+| Autor                     | GitHub                                   |
+|---------------------------|------------------------------------------|
+| **Jon Mazcuñán Hernández** | [JonMazcunhan](https://github.com/jonmazh) |
+| **Alejandro Rico González**| //TODO |
 ---
 
 ## Descripción
