@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "string.h": "c",
-        "libreria.h": "c"
+        "libreria.h": "c",
+        "stdlib.h": "c"
     }
 }
