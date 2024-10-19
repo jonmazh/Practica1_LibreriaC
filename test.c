@@ -1,4 +1,11 @@
 #include "libreria.h"
+#include <stdio.h> 
+#include <errno.h> 
+#include <string.h> 
+#include <stdlib.h> 
+#include <unistd.h> 
+
+int callFunct(char *funct, int nLines, const char *MSGERR);
 
 int main(int argc, char *argv[])
 {
@@ -31,7 +38,7 @@ int main(int argc, char *argv[])
  *  @param nLines Líneas a mostrar.
  *  @return -1 en caso de error, 0 en caso de encontrar la función.
  */
-int callFunct(char *funct, int nLines, char *MSGERR){
+int callFunct(char *funct, int nLines, const char *MSGERR){
 	if (strcmp(funct,"head")==0){
 		return head(nLines);
 	}
