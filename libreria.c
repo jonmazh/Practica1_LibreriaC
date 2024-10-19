@@ -10,26 +10,26 @@
 
 int main(int argc, char *argv[])
 {
-  char *MSGERR = "Use ./libreria.c head [DIRECTORIO].";
+  const char *MSGERRM = "Use ./libreria.c head [DIRECTORIO].";
   char *funct;
   int nLinesM; 
   if (argc == 1){
-	printf("%s", MSGERR); 
+	printf("%s", MSGERRM); 
 	return -1; 
   }
   else if(argc>3){
-	printf("%s", MSGERR); 
+	printf("%s", MSGERRM); 
 	return -1; 
   }
   else if(argc=3){
 	*funct = argv[2];
 	nLinesM = atoi(argv[3]); 
-	return callFunct(funct, nLinesM);
+	return callFunct(funct, nLinesM, MSGERRM);
   }
   else{ //2 ARGUMENTOS
 	nLinesM = 10; 
 	*funct = argv[2];
-	return callFunct(funct, nLinesM);
+	return callFunct(funct, nLinesM, MSGERRM);
   }
 }
 
@@ -39,17 +39,18 @@ int main(int argc, char *argv[])
  *  @param nLines Líneas a mostrar.
  *  @return -1 en caso de error, 0 en caso de encontrar la función.
  */
-int callFunct(char *funct, int nLines){
-	if (funct == "head"){
-		return head(nLines);
+int callFunct(char *funct, int nLines, char *MSGERR){
+	if (strcmp(funct,"head")==0){
+		return head(nLines, MSGERR);
 	}
-	else if (funct == "tail"){
+	else if (strcmp(funct,"tail")==0){
 		//TODO
 	}
-	else if (funct == "longlines"){
+	else if (strcmp(funct,"longlines")==0){
 		//TODO
 	}
 	else{
+		puts(MSGERR);
 		return -1;
 	}
 
@@ -64,9 +65,8 @@ int callFunct(char *funct, int nLines){
  * @param lines Líneas que se van a devolver.
  * @return lines.
  */
-int head(int nLines) 
+int head(int nLines,char *MSGERR) 
 {
-	const char *MSGERR = "Use ./libreria.c head [DIRECTORIO].";
 	char buffer[1024];
 	int size = 100, counter = 0;
 	int i = 0, j = 0; 
@@ -109,7 +109,7 @@ int head(int nLines)
 
 	//Imprimir líneas por salida estándar
 	for (i = 0 ; i < nLines ; i++){
-		put(lines[i]); 
+		puts(lines[i]); 
 		free(lines[i]);
 	}
 
