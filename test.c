@@ -12,22 +12,18 @@ int main(int argc, char *argv[])
   const char *MSGERRM = "Use ./libreria.c head [DIRECTORIO].";
   char *funct;
   int nLinesM; 
-  if (argc == 1){
+  if ((argc == 1)||(argc>3)){
 	printf("%s", MSGERRM); 
 	return -1; 
   }
-  else if(argc>3){
-	printf("%s", MSGERRM); 
-	return -1; 
-  }
-  else if(argc=3){
-	funct = argv[2];
-	nLinesM = atoi(argv[3]); 
+  else if(argc==3){
+	funct = argv[1];
+	nLinesM = atoi(argv[2]); 
 	return callFunct(funct, nLinesM, MSGERRM);
   }
   else{ //2 ARGUMENTOS
 	nLinesM = 10; 
-	funct = argv[2];
+	funct = argv[1];
 	return callFunct(funct, nLinesM, MSGERRM);
   }
 }
