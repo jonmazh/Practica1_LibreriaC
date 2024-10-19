@@ -21,13 +21,13 @@ int main(int argc, char *argv[])
 	return -1; 
   }
   else if(argc=3){
-	*funct = argv[2];
+	funct = argv[2];
 	nLinesM = atoi(argv[3]); 
 	return callFunct(funct, nLinesM, MSGERRM);
   }
   else{ //2 ARGUMENTOS
 	nLinesM = 10; 
-	*funct = argv[2];
+	funct = argv[2];
 	return callFunct(funct, nLinesM, MSGERRM);
   }
 }
