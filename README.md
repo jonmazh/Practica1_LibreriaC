@@ -14,7 +14,7 @@ Este proyecto implementa una librería en C con funcionalidades similares a los 
 
 ### Funcionalidades principales de la librería:
 
-- **`int head(int N) ✅`**
+- **`int head(int N)`**
   Muestra las primeras N líneas recibidas por la entrada estándar.
 
 - **`int tail(int N)`**  
