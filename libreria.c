@@ -15,7 +15,7 @@
 int head(int nLines) 
 {
 	char *MSGERR = "Use ./libreria.c head [DIRECTORIO].";
-	int size = 100, counter = 0;
+	int size = 15, counter = 0;
 	int i = 0, j = 0; 
 	char **lines; 
 
@@ -27,7 +27,7 @@ int head(int nLines)
 
 	//Asignación de memoria dinámica a lines
 	for (i ; i < nLines ; i++){
-		lines[i] = (char *)malloc(sizeof(char)); 
+		lines[i] = (char *)malloc(1024 * sizeof(char)); 
 		if (lines[i] == NULL){
 			for (j ; j < nLines ; j++){
 				free(lines[j]);
@@ -39,14 +39,14 @@ int head(int nLines)
 
 	//Recorrido de stdin para acumular lineas en lines
 	while (counter < nLines){
-		if (fgets(lines[counter], size, stdin)){
+		if (fgets(lines[counter], 1024, stdin)){
 			counter++; 
 		}
 		else if (feof(stdin)){
-			return -1 ; 
+			break; 
 		}
 		else{
-			for (j = 0 ; j < nLines ; j++){
+			for (j = 0 ; j < i ; j++){
 				free(lines[j]);
 			}
 			free(lines);
