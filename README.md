@@ -40,8 +40,8 @@ El repositorio incluye los siguientes archivos:
   ```bash
   ./test -<función> [número de líneas]
 
-- **`test.c`**
-  Script para generar la librería estática liblibreria.a, compilar el programa de prueba (test.c) y enlazarlo con la librería.
+- **`script.sh`**
+  Script para generar la librería estática libreria.h, compilar el programa de prueba (test.c) y enlazarlo con la librería.
 
 ---
 
