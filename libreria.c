@@ -106,7 +106,7 @@ int tail(int nLines){
 		return -1; 
 	}
 
-	for (i = 0 ; i<counter ; i++){
+	for (i = 0 ; i<nLines ; i++){
 		puts(lines[i]); 
 		free(lines[i]); 
 	}
