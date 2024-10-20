@@ -68,3 +68,55 @@ int head(int nLines)
 
 
 
+/**
+ * Función que muestra las N últimas líneas de la entrada estándar.
+ * @param size Tamaño máximo para una línea
+ * @param counter Contador para saber las líneas que se han leído 
+ * @param lines Líneas que se van a devolver.
+ * @param stdin_size Número de líneas que nos introducen, para gestionar errores.
+ * @return 0 si ha habido exito, -1 si ha habido algún error.
+ */
+int tail(int nLines){
+	char **lines; 
+	int i ,j, counter = 0, deduct, stdin_size = 0;
+	
+	//Asignación de memoria a lines y buffer
+	lines = (char **)malloc(nLines*sizeof(char *)); 
+	if (lines == NULL){
+		return -1; 
+	}
+
+
+	while(fgets(lines[counter], 1024, stdin) != NULL){
+		if (feof(stdin)){
+			break; 
+		}
+		else{
+			for (i = 0; i<nLines; i++){
+				free(lines[j]); 
+			}
+			free(lines); 
+			return -1;
+		}	
+		if(counter==2){
+			counter = 0; 
+		}
+		else{
+			counter++;
+		}
+		stdin_size++; 
+	}
+
+	if (nLines>stdin_size){
+		return -1; 
+	}
+
+	for (i = 0 ; i<counter ; i++){
+		puts(lines[i]); 
+		free(lines[i]); 
+	}
+	free(lines); 
+	
+	return 0 ; 
+}
+
