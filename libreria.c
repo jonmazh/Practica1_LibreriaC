@@ -97,24 +97,8 @@ int tail(int nLines){
 			}
 	}
 
-
 	while(fgets(lines[counter], 1024, stdin) != NULL){
-		if (feof(stdin)){
-			break; 
-		}
-		else{
-			for (i = 0; i<nLines; i++){
-				free(lines[j]); 
-			}
-			free(lines); 
-			return -1;
-		}	
-		if(counter==2){
-			counter = 0; 
-		}
-		else{
-			counter++;
-		}
+		counter = (counter + 1) % nLines; 
 		stdin_size++; 
 	}
 
