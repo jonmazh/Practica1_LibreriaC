@@ -9,7 +9,9 @@ int callFunct(char *funct, int nLines, const char *MSGERR);
 
 int main(int argc, char *argv[])
 {
-  const char *MSGERRM = "Use ./libreria.c head [DIRECTORIO].";
+  char *MSGERRM = "Use : ./test -[funct] [nlines]";
+  char *EOFERROR = "Expected more lines but got to the end of file";
+  char *ASGERROR = "Asignation failed";
   char *funct;
   int nLinesM; 
   if ((argc == 1)||(argc>3)){
@@ -39,7 +41,7 @@ int callFunct(char *funct, int nLines, const char *MSGERR){
 		return head(nLines);
 	}
 	else if (strcmp(funct,"tail")==0){
-		//TODO
+		return tail(nLines); 
 	}
 	else if (strcmp(funct,"longlines")==0){
 		//TODO
