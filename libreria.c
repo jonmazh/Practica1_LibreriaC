@@ -6,7 +6,7 @@
 #include <unistd.h> 
 
 /**
- * Función que muestra las N primeras líneas de la entrada estándar.
+ * Mostrar las N primeras líneas de la entrada estándar
  * @param size Tamaño máximo para una línea
  * @param counter Contador para saber las líneas que se han leído 
  * @param lines Líneas que se van a devolver.
