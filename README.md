@@ -5,7 +5,7 @@
 | Autor                     | GitHub                                   |
 |---------------------------|------------------------------------------|
 | **Jon Mazcuñán Hernández** | [jonmazh](https://github.com/jonmazh) |
-| **Alejandro Rico González**| //TODO |
+| **Alejandro Rico González**| [ALEJANDR0-RIC0](https://github.com/ALEJANDR0-RIC0) |
 ---
 
 ## Descripción
@@ -17,7 +17,7 @@ Este proyecto implementa una librería en C con funcionalidades similares a los 
 - **`int head(int N)✅`**  
   Muestra las primeras N líneas recibidas por la entrada estándar.
 
-- **`int tail(int N)`**  
+- **`int tail(int N)✅`**  
   Muestra las últimas N líneas recibidas por la entrada estándar.
 
 - **`int longlines(int N)`**  
