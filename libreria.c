@@ -115,3 +115,14 @@ int tail(int nLines){
 	return 0 ; 
 }
 
+int longlines (int nLines) {
+
+	lines = (char **)malloc(nLines*sizeof(char *));
+	int *lengths = (int *)malloc(nLines * sizeof(int));
+	int count = 0;
+	int max_length = 1024;
+	
+	
+
+	return 0;
+}
