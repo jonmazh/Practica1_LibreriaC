@@ -123,8 +123,9 @@ int longlines (int nLines) {
 	int *lengths = (int *)malloc(nLines * sizeof(int));
 	int count = 0;
 	int max_length = 1024;
-	int i, j;
+	int i, j, aux;
 	char buffer[max_length];
+	char aux2[max_length];
 
 	// Comprobar si se ha asignado memoria correctamente
 	if (lines == NULL || lengths == NULL){
@@ -156,18 +157,35 @@ int longlines (int nLines) {
 		}
 	}
 
+	// Ordenar las líneas de mayor a menor longitud usando bubble sort
+	for (i = 0; i < nLines; i++){
+		for (j = i+1; j < nLines; j++){
+			if (lengths[i] < lengths[j]){
+				aux = lengths[i];
+				lengths[i] = lengths[j];
+				lengths[j] = aux;
+
+				strcpy(aux2, lines[i]);
+				strcpy(lines[i], lines[j]);
+				strcpy(lines[j], aux2);
+			}
+		}
+	}
+ 
+	// Imprimir las líneas ordenadas
+
+
+
+
+	
+	// Liberar memoria
+    for (i = 0; i < nLines; i++) {
+        free(lines[i]);
+    }
+    free(lines);
+    free(lengths);
+
 
 	return 0;
 }
 
-
-int main() {
-    int N;
-    printf("Introduce el número N de líneas más largas a mostrar: ");
-    scanf("%d", &N);
-    getchar();
-
-    longlines(N);
-
-    return 0;
-}
