@@ -44,7 +44,7 @@ int callFunct(char *funct, int nLines, const char *MSGERR){
 		return tail(nLines); 
 	}
 	else if (strcmp(funct,"longlines")==0){
-		//TODO
+		return longlines(nLines);
 	}
 	else{
 		puts(MSGERR);

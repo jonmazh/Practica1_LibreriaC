@@ -172,16 +172,11 @@ int longlines (int nLines) {
 		}
 	}
  
-	// Imprimir las líneas ordenadas
-
-
-
-
-	
-	// Liberar memoria
-    for (i = 0; i < nLines; i++) {
-        free(lines[i]);
-    }
+	// Imprimir las líneas ordenadas y liberar la memoria
+	for (i = 0 ; i<nLines ; i++){
+		puts(lines[i]); 
+		free(lines[i]); 
+	}
     free(lines);
     free(lengths);
 
