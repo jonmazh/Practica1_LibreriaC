@@ -115,14 +115,59 @@ int tail(int nLines){
 	return 0 ; 
 }
 
+
+
 int longlines (int nLines) {
 
-	lines = (char **)malloc(nLines*sizeof(char *));
+	char **lines = (char **)malloc(nLines*sizeof(char *));
 	int *lengths = (int *)malloc(nLines * sizeof(int));
 	int count = 0;
 	int max_length = 1024;
+	int i, j;
+	char buffer[max_length];
+
+	// Comprobar si se ha asignado memoria correctamente
+	if (lines == NULL || lengths == NULL){
+		free(lines);
+		free(lengths);
+		return -1;
+	}
+
+	// Asignar memoria a cada línea de lines y a lengths
+	for(i = 0; i<nLines; i++){
+		lines[i] = (char *)malloc(max_length*sizeof(char));
+		if (lines[i]==NULL){
+			for (j = 0; j < i; j++){
+				free(lines[j]);
+			}
+
+			free(lines);
+			free(lengths);
+			return -1; 
+		}
+	}
 	
-	
+	// Leer las líneas de la entrada estándar y almacenarlas en el array lines y en el array lengths
+	while(fgets(buffer, max_length, stdin) != NULL){
+		if (count < nLines){
+			strcpy(lines[count], buffer);
+			lengths[count] = strlen(buffer);
+			count++;
+		}
+	}
+
 
 	return 0;
+}
+
+
+int main() {
+    int N;
+    printf("Introduce el número N de líneas más largas a mostrar: ");
+    scanf("%d", &N);
+    getchar();
+
+    longlines(N);
+
+    return 0;
 }
