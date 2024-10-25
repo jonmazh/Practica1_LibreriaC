@@ -117,12 +117,22 @@ int tail(int nLines){
 
 
 
+/**
+ * Función que muestra N líneas de la E/S ordenadas de mayor a menor longitud.
+ * @param lines
+ * @param lengths 
+ * @param count
+ * @param max_length
+ * @param buffer
+ * @param aux2 
+ * @return 
+ */
 int longlines (int nLines) {
 
 	char **lines = (char **)malloc(nLines*sizeof(char *));
 	int *lengths = (int *)malloc(nLines * sizeof(int));
 	int count = 0;
-	int max_length = 1024;
+	int max_length = 1024; 
 	int i, j, aux;
 	char buffer[max_length];
 	char aux2[max_length];
