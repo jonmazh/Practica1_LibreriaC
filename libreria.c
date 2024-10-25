@@ -130,8 +130,9 @@ int tail(int nLines){
  */
 int longlines (int nLines) {
 
-	char **lines = (char **)malloc(nLines*sizeof(char *));
-	int *lengths = (int *)malloc(nLines * sizeof(int));
+	int capacity = 100;
+	char **lines = (char **)malloc(capacity * sizeof(char *));
+	int *lengths = (int *)malloc(capacity * sizeof(int));
 	int count = 0;
 	int max_length = 1024; 
 	int i, j, aux;
@@ -146,7 +147,7 @@ int longlines (int nLines) {
 	}
 
 	// Asignar memoria a cada línea de lines y a lengths
-	for(i = 0; i<nLines; i++){
+	for(i = 0; i < capacity; i++){
 		lines[i] = (char *)malloc(max_length*sizeof(char));
 		if (lines[i]==NULL){
 			for (j = 0; j < i; j++){
@@ -161,16 +162,30 @@ int longlines (int nLines) {
 	
 	// Leer las líneas de la entrada estándar y almacenarlas en el array lines y en el array lengths
 	while(fgets(buffer, max_length, stdin) != NULL){
-		if (count < nLines){
-			strcpy(lines[count], buffer);
-			lengths[count] = strlen(buffer);
-			count++;
+		if (count >= capacity){
+			capacity *= 2;
+
+			lines = (char **)realloc(lines, capacity * sizeof(char *));
+			lengths = (int *)realloc(lengths, capacity * sizeof(int));
+
+			if (lines == NULL || lengths == NULL){
+				for (i = 0; i < count; i++){
+                	free(lines[i]);
+            	}
+
+				free(lines);
+				free(lengths);
+				return -1;
+			}
 		}
+		strcpy(lines[count], buffer);
+		lengths[count] = strlen(buffer);
+		count++;
 	}
 
 	// Ordenar las líneas de mayor a menor longitud usando bubble sort
-	for (i = 0; i < nLines; i++){
-		for (j = i+1; j < nLines; j++){
+	for (i = 0; i < count; i++){
+		for (j = i+1; j < count; j++){
 			if (lengths[i] < lengths[j]){
 				aux = lengths[i];
 				lengths[i] = lengths[j];
@@ -184,7 +199,7 @@ int longlines (int nLines) {
 	}
  
 	// Imprimir las líneas ordenadas y liberar la memoria
-	for (i = 0 ; i<nLines ; i++){
+	for (i = 0 ; i < nLines ; i++){
 		puts(lines[i]); 
 		free(lines[i]); 
 	}
