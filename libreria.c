@@ -40,6 +40,7 @@ int head(int nLines)
 	//Recorrido de stdin para acumular lineas en lines
 	while (counter < nLines){
 		if (fgets(lines[counter], 1024, stdin)){
+			puts(lines[counter]);
 			counter++; 
 		}
 		else if (feof(stdin)){
@@ -54,9 +55,7 @@ int head(int nLines)
 		}
 	}
 
-	//Imprimir líneas por salida estándar
-	for (i = 0 ; i < nLines ; i++){
-		puts(lines[i]); 
+	for (i = 0 ; i < nLines ; i++){ 
 		free(lines[i]);
 	}
 
