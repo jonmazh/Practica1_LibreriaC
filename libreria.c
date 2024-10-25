@@ -177,7 +177,22 @@ int longlines (int nLines) {
 				free(lengths);
 				return -1;
 			}
+
+			
+			for(i = count; i < capacity; i++){
+				lines[i] = (char *)malloc(max_length*sizeof(char));
+				if (lines[i]==NULL){
+					for (j = 0; j < i; j++){
+						free(lines[j]);
+					}
+
+					free(lines);
+					free(lengths);
+					return -1; 
+				}
+			}
 		}
+
 		strcpy(lines[count], buffer);
 		lengths[count] = strlen(buffer);
 		count++;
