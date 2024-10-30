@@ -76,7 +76,7 @@ int head(int nLines)
  */
 int tail(int nLines){
 	char **lines; 
-	int i, j, counter = 0, stdin_size = 0;
+	int i, j, counter = 0, stdin_size = 0, auxCounter ; 
 	
 	//Asignación de memoria a lines y buffer
 	lines = (char **)malloc(nLines*sizeof(char *)); 
@@ -105,9 +105,11 @@ int tail(int nLines){
 		return -1; 
 	}
 
+	auxCounter = counter ;
 	for (i = 0 ; i<nLines ; i++){
-		puts(lines[i]); 
-		free(lines[i]); 
+		puts(lines[auxCounter]); 
+		free(lines[auxCounter]); 
+		auxCounter = (auxCounter+1)%nLines; 
 	}
 	free(lines); 
 
