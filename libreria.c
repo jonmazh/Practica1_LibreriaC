@@ -118,6 +118,28 @@ int tail(int nLines){
 
 
 
+void order_lines(char **lines, int *lengths, int count){
+	int i, j, aux;
+	char aux2[1024];
+
+	// Ordenar las líneas de mayor a menor longitud usando bubble sort
+	for (i = 0; i < count; i++){
+		for (j = i+1; j < count; j++){
+			if (lengths[i] < lengths[j]){
+				aux = lengths[i];
+				lengths[i] = lengths[j];
+				lengths[j] = aux;
+
+				strcpy(aux2, lines[i]);
+				strcpy(lines[i], lines[j]);
+				strcpy(lines[j], aux2);
+			}
+		}
+	}
+}
+
+
+
 /**
  * Función que muestra N líneas de la E/S ordenadas de mayor a menor longitud.
  * @param lines
@@ -125,7 +147,6 @@ int tail(int nLines){
  * @param count
  * @param max_length
  * @param buffer
- * @param aux2 
  * @return 
  */
 int longlines (int nLines) {
@@ -135,9 +156,8 @@ int longlines (int nLines) {
 	int *lengths = (int *)malloc(capacity * sizeof(int));
 	int count = 0;
 	int max_length = 1024; 
-	int i, j, aux;
+	int i, j;
 	char buffer[max_length];
-	char aux2[max_length];
 
 	// Comprobar si se ha asignado memoria correctamente
 	if (lines == NULL || lengths == NULL){
@@ -198,20 +218,7 @@ int longlines (int nLines) {
 		count++;
 	}
 
-	// Ordenar las líneas de mayor a menor longitud usando bubble sort
-	for (i = 0; i < count; i++){
-		for (j = i+1; j < count; j++){
-			if (lengths[i] < lengths[j]){
-				aux = lengths[i];
-				lengths[i] = lengths[j];
-				lengths[j] = aux;
-
-				strcpy(aux2, lines[i]);
-				strcpy(lines[i], lines[j]);
-				strcpy(lines[j], aux2);
-			}
-		}
-	}
+	order_lines(lines, lengths, count);
  
 	// Imprimir las líneas ordenadas y liberar la memoria
 	for (i = 0 ; i < nLines ; i++){
