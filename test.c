@@ -11,8 +11,6 @@ int callFunct(char *funct, int nLines, const char *MSGERR);
 int main(int argc, char *argv[])
 {
   char *MSGERRM = "Use : ./test -[funct] [nlines]";
-  char *EOFERROR = "Expected more lines but got to the end of file";
-  char *ASGERROR = "Asignation failed";
   char *funct;
   int nLinesM; 
   if ((argc == 1)||(argc>3)){
