@@ -20,7 +20,7 @@ Este proyecto implementa una librería en C con funcionalidades similares a los 
 - **`int tail(int N)✅`**  
   Muestra las últimas N líneas recibidas por la entrada estándar.
 
-- **`int longlines(int N)`**  
+- **`int longlines(int N)✅`**  
   Muestra las N líneas más largas recibidas por la entrada estándar, ordenadas de mayor a menor.
 
 ---
