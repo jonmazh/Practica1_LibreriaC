@@ -14,7 +14,7 @@
  */
 int head(int nLines) 
 {
-	char *MSGERR = "Use ./libreria.c head [DIRECTORIO].";
+	char *MSGERR = "Use ./libreria.c -head [DIRECTORIO].";
 	int size = 15, counter = 0;
 	int i = 0, j = 0; 
 	char **lines; 
@@ -77,10 +77,18 @@ int head(int nLines)
 int tail(int nLines){
 	char **lines; 
 	int i, j, counter = 0, stdin_size = 0, auxCounter ; 
+	char *MSGERR = "Use ./libreria.c -tail [DIRECTORIO]." ;
+
+	//Comprobación de error con nLines 0 o menor a 0 
+	if (nLines<1){
+		puts(MSGERR); 
+		return -1; 
+	}
 	
 	//Asignación de memoria a lines y buffer
 	lines = (char **)malloc(nLines*sizeof(char *)); 
 	if (lines == NULL){
+		puts(MSGERR); 
 		return -1; 
 	}
 
@@ -117,11 +125,14 @@ int tail(int nLines){
 }
 
 
-
+/**
+ * Función que ordena líneas de mayor a menor longitud.
+ * @param aux2 Estructura de datos que almacena la línea a cambiar
+ */
 void order_lines(char **lines, int *lengths, int count){
 	int i, j, aux;
 	char aux2[1024];
-
+	
 	// Ordenar las líneas de mayor a menor longitud usando bubble sort
 	for (i = 0; i < count; i++){
 		for (j = i+1; j < count; j++){
@@ -142,12 +153,11 @@ void order_lines(char **lines, int *lengths, int count){
 
 /**
  * Función que muestra N líneas de la E/S ordenadas de mayor a menor longitud.
- * @param lines
- * @param lengths 
- * @param count
- * @param max_length
- * @param buffer
- * @return 
+ * @param lines Arreglo que se encarga de almacenar las líneas de entrada estándar.
+ * @param lengths Arreglo que se encarga de almacenar las longitudes de las líneas.
+ * @param count Números de líneas introducidas por E/S. 
+ * @param buffer Estructura que almacena cada línea de la E/S. 
+ * @return Int, 0 si ejecuta correctamente y -1 si no. 
  */
 int longlines (int nLines) {
 

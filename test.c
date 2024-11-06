@@ -7,6 +7,7 @@
 
 int callFunct(char *funct, int nLines, const char *MSGERR);
 
+
 int main(int argc, char *argv[])
 {
   char *MSGERRM = "Use : ./test -[funct] [nlines]";
@@ -37,13 +38,13 @@ int main(int argc, char *argv[])
  *  @return -1 en caso de error, 0 en caso de encontrar la función.
  */
 int callFunct(char *funct, int nLines, const char *MSGERR){
-	if (strcmp(funct,"head")==0){
+	if (strcmp(funct,"-head")==0){
 		return head(nLines);
 	}
-	else if (strcmp(funct,"tail")==0){
+	else if (strcmp(funct,"-tail")==0){
 		return tail(nLines); 
 	}
-	else if (strcmp(funct,"longlines")==0){
+	else if (strcmp(funct,"-longlines")==0){
 		return longlines(nLines);
 	}
 	else{
