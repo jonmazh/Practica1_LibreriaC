@@ -7,6 +7,7 @@
 
 int callFunct(char *funct, int nLines, const char *MSGERR);
 
+
 int main(int argc, char *argv[])
 {
   char *MSGERRM = "Use : ./test -[funct] [nlines]";
