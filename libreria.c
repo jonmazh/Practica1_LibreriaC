@@ -14,7 +14,7 @@
  */
 int head(int nLines) 
 {
-	char *MSGERR = "Use ./libreria.c head [DIRECTORIO].";
+	char *MSGERR = "Use ./libreria.c -head [DIRECTORIO].";
 	int size = 15, counter = 0;
 	int i = 0, j = 0; 
 	char **lines; 
@@ -77,10 +77,18 @@ int head(int nLines)
 int tail(int nLines){
 	char **lines; 
 	int i, j, counter = 0, stdin_size = 0, auxCounter ; 
+	char *MSGERR = "Use ./libreria.c -tail [DIRECTORIO]." ;
+
+	//Comprobación de error con nLines 0 o menor a 0 
+	if (nLines<1){
+		puts(MSGERR); 
+		return -1; 
+	}
 	
 	//Asignación de memoria a lines y buffer
 	lines = (char **)malloc(nLines*sizeof(char *)); 
 	if (lines == NULL){
+		puts(MSGERR); 
 		return -1; 
 	}
 
@@ -124,7 +132,7 @@ int tail(int nLines){
 void order_lines(char **lines, int *lengths, int count){
 	int i, j, aux;
 	char aux2[1024];
-
+	
 	// Ordenar las líneas de mayor a menor longitud usando bubble sort
 	for (i = 0; i < count; i++){
 		for (j = i+1; j < count; j++){
